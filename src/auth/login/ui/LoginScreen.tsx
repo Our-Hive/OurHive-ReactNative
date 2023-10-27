@@ -1,7 +1,8 @@
 import { StyleSheet, View, Text, TextInput, Image } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import ActionButton from "../../../components/ActionButton";
-import UnderlineText from "./components/UnderlineText";
+import UnderlineText from "../../../components/UnderlineText";
+import { Link, useRouter } from "expo-router";
 
 export default function LoginScreen() {
   const {
@@ -14,6 +15,8 @@ export default function LoginScreen() {
       password: "",
     },
   });
+
+  const router = useRouter();
 
   const onSubmit = (data: any) => console.log(data);
 
@@ -31,6 +34,7 @@ export default function LoginScreen() {
           control={control}
           rules={{
             required: true,
+            pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -44,12 +48,13 @@ export default function LoginScreen() {
           name="email"
         />
         {errors.email && (
-          <Text style={styles.alert}>Este campo es obligatorio.</Text>
+          <Text style={styles.alert}>Correo invalido</Text>
         )}
         <Controller
           control={control}
           rules={{
             required: true,
+            minLength: 8,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
@@ -72,11 +77,14 @@ export default function LoginScreen() {
         <Text style={{ color: "#EEEEEE", fontSize: 20 }}>
           ¿No puedes iniciar sesión?
         </Text>
-        <UnderlineText title="Crear Cuenta" />
+        <Link asChild href="/register">
+          <UnderlineText title="Crear Cuenta" />
+        </Link>
       </View>
       {/* <Link href="/register" asChild>
         <UnderlineText title="Crear Cuenta"/>
       </Link> */}
+
     </View>
   );
 }
@@ -114,7 +122,7 @@ const styles = StyleSheet.create({
     borderColor: "yellow",
     borderRadius: 10,
     marginBottom: 10,
-    marginTop: 10,
+    marginTop: 20,
     fontSize: 20,
   },
   alert: {
@@ -122,13 +130,13 @@ const styles = StyleSheet.create({
   },
   header: {
     position: "absolute",
-    top: 100,
+    top: 130,
     alignItems: "center",
     justifyContent: "center",
   },
   bodyContainer: {
     position: "absolute",
-    top: "55%", // Coloca el centro vertical en el 50% de la pantalla
+    top: "57%", // Coloca el centro vertical en el 50% de la pantalla
     left: "48%", // Coloca el centro horizontal en el 50% de la pantalla
     transform: [{ translateX: -150 }, { translateY: -100 }], // Ajusta la posición
     alignItems: "center",

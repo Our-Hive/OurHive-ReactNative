@@ -3,8 +3,14 @@ import { useForm, Controller } from "react-hook-form";
 import ActionButton from "../../../components/ActionButton";
 import UnderlineText from "../../../components/UnderlineText";
 import { Link, useRouter } from "expo-router";
+import { useFonts, Nosifer_400Regular } from "@expo-google-fonts/nosifer";
 
 export default function LoginScreen() {
+  
+  useFonts({
+    Nosifer: Nosifer_400Regular,
+  });
+
   const {
     control,
     handleSubmit,
@@ -16,8 +22,6 @@ export default function LoginScreen() {
     },
   });
 
-  const router = useRouter();
-
   const onSubmit = (data: any) => console.log(data);
 
   return (
@@ -27,7 +31,7 @@ export default function LoginScreen() {
           source={require("../../../../assets/bee.png")}
           style={styles.image}
         />
-        <Text style={styles.title}>OUR HIVE</Text>
+        <Text style={{fontFamily: 'Nosifer', fontSize:50, color:"#FFF500"}}>OUR HIVE</Text>
       </View>
       <View style={styles.bodyContainer}>
         <Controller
@@ -47,9 +51,7 @@ export default function LoginScreen() {
           )}
           name="email"
         />
-        {errors.email && (
-          <Text style={styles.alert}>Correo invalido</Text>
-        )}
+        {errors.email && <Text style={styles.alert}>Correo invalido</Text>}
         <Controller
           control={control}
           rules={{
@@ -84,7 +86,6 @@ export default function LoginScreen() {
       {/* <Link href="/register" asChild>
         <UnderlineText title="Crear Cuenta"/>
       </Link> */}
-
     </View>
   );
 }
@@ -99,11 +100,12 @@ const styles = StyleSheet.create({
   image: {
     width: 150,
     height: 150,
-    marginBottom: 30,
+    marginBottom: 10,
   },
   title: {
     fontSize: 50,
     fontWeight: "bold",
+    fontFamily: "Nosifer",
     color: "#FFF500",
     marginBottom: 10,
   },
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
   },
   header: {
     position: "absolute",
-    top: 130,
+    top: 180,
     alignItems: "center",
     justifyContent: "center",
   },

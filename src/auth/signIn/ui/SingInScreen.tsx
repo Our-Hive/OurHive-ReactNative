@@ -8,8 +8,14 @@ import {
 } from 'react-native';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
+import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
 
 export default function SignInScreen({ navigation }: { navigation: any }) {
+
+  useFonts({
+    Nosifer: Nosifer_400Regular,
+  });
+
   const {
     control,
     handleSubmit,
@@ -32,7 +38,7 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
           source={require('../../../../assets/bee.png')}
           style={styles.image}
         />
-        <Text style={styles.title}>OUR HIVE</Text>
+        <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: '#FFF500' }}>OUR HIVE</Text>
       </View>
       <View style={styles.bodyContainer}>
         <Controller

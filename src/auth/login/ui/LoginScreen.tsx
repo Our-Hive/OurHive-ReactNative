@@ -1,12 +1,11 @@
-import { StyleSheet, View, Text, TextInput, Image } from "react-native";
+import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import { useForm, Controller } from "react-hook-form";
 import ActionButton from "../../../components/ActionButton";
 import UnderlineText from "../../../components/UnderlineText";
-import { Link, useRouter } from "expo-router";
 import { useFonts, Nosifer_400Regular } from "@expo-google-fonts/nosifer";
 
-export default function LoginScreen() {
-  
+export default function LoginScreen({ navigation }: { navigation: any }) {
+
   useFonts({
     Nosifer: Nosifer_400Regular,
   });
@@ -31,7 +30,7 @@ export default function LoginScreen() {
           source={require("../../../../assets/bee.png")}
           style={styles.image}
         />
-        <Text style={{fontFamily: 'Nosifer', fontSize:50, color:"#FFF500"}}>OUR HIVE</Text>
+        <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: "#FFF500" }}>OUR HIVE</Text>
       </View>
       <View style={styles.bodyContainer}>
         <Controller
@@ -75,17 +74,16 @@ export default function LoginScreen() {
         )}
         <ActionButton title="Iniciar Sesión" onPress={handleSubmit(onSubmit)} />
       </View>
-      <View style={styles.footer}>
-        <Text style={{ color: "#EEEEEE", fontSize: 20 }}>
-          ¿No puedes iniciar sesión?
-        </Text>
-        <Link asChild href="/register">
+      <TouchableOpacity
+        onPress={() => navigation.navigate('SignIn')}
+      >
+        <View style={styles.footer}>
+          <Text style={{ color: "#EEEEEE", fontSize: 20 }}>
+            ¿No puedes iniciar sesión?
+          </Text>
           <UnderlineText title="Crear Cuenta" />
-        </Link>
-      </View>
-      {/* <Link href="/register" asChild>
-        <UnderlineText title="Crear Cuenta"/>
-      </Link> */}
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

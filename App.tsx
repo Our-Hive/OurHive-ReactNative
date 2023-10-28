@@ -1,8 +1,9 @@
 //import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LoginScreen from './src/auth/login/ui/LoginScreen';
-import SignInScreen from './src/auth/signIn/ui/SingInScreen';
+import SignInScreen from './src/auth/login/ui/signIn/SingInScreen';
 import { Nosifer_400Regular, useFonts } from '@expo-google-fonts/nosifer';
+import Navigation from './src/Routes/Navigation';
 
 export default function App() {
 
@@ -15,7 +16,7 @@ export default function App() {
   }
 
   return (
-    <LoginScreen />
+    <Navigation />
   );
 }
 /**

@@ -1,9 +1,9 @@
 import { Controller, useForm } from "react-hook-form";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import ActionButton from "../../../components/ActionButton";
 import UnderlineText from "../../../components/UnderlineText";
 
-export default function SignInScreen() {
+export default function SignInScreen({ navigation }: { navigation: any }) {
   const {
     control,
     handleSubmit,
@@ -29,97 +29,100 @@ export default function SignInScreen() {
         <Text style={styles.title}>OUR HIVE</Text>
       </View>
       <View style={styles.bodyContainer}>
-        <Controller 
-            control={control}
-            rules={{
-                required: true,
-                pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Email"
-                />
-            )}
-            name="email"
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+            pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Email"
+            />
+          )}
+          name="email"
         />
         {errors.email && (
           <Text style={styles.alert}>Correo invalido.</Text>
         )}
         <Controller
-            control={control}
-            rules={{
-                required: true,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                placeholder="Username"
-                />
-            )}
-            name="username"
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Username"
+            />
+          )}
+          name="username"
         />
         {errors.username && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
         <Controller
-            control={control}
-            rules={{
-                required: true,
-                minLength: 8,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                secureTextEntry={true}
-                placeholder="Password"
-                />
-            )}
-            name="password"
+          control={control}
+          rules={{
+            required: true,
+            minLength: 8,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry={true}
+              placeholder="Password"
+            />
+          )}
+          name="password"
         />
         {errors.password && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
         <Controller
-            control={control}
-            rules={{
-                required: true,
-                minLength: 8,
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-                secureTextEntry={true}
-                placeholder="Re-password"
-                />
-            )}
-            name="repassword"
+          control={control}
+          rules={{
+            required: true,
+            minLength: 8,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry={true}
+              placeholder="Re-password"
+            />
+          )}
+          name="repassword"
         />
         {errors.repassword && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
         <ActionButton
           title="Registrate"
-          onPress={handleSubmit(onSubmit)}/>
+          onPress={handleSubmit(onSubmit)} />
       </View>
-      <View style={styles.footer}>
-        <Text style={{ color: "#EEEEEE", fontSize: 20 }}>
-          ¿Ya tienes una cuenta?
-        </Text>
-        <UnderlineText title="Iniciar Sesión" />
-      </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Login')}>
+        <View style={styles.footer}>
+          <Text style={{ color: "#ff0000", fontSize: 20 }}>
+            ¿Ya tienes una cuenta?
+          </Text>
+          <UnderlineText title="Iniciar Sesión" />
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }

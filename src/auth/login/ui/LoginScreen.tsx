@@ -1,11 +1,17 @@
-import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
-import { useForm, Controller } from "react-hook-form";
-import ActionButton from "../../../components/ActionButton";
-import UnderlineText from "../../../components/UnderlineText";
-import { useFonts, Nosifer_400Regular } from "@expo-google-fonts/nosifer";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import { useForm, Controller } from 'react-hook-form';
+import ActionButton from '../../../components/ActionButton';
+import UnderlineText from '../../../components/UnderlineText';
+import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
 
 export default function LoginScreen({ navigation }: { navigation: any }) {
-
   useFonts({
     Nosifer: Nosifer_400Regular,
   });
@@ -16,8 +22,8 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
   });
 
@@ -27,10 +33,12 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require("../../../../assets/bee.png")}
+          source={require('../../../../assets/bee.png')}
           style={styles.image}
         />
-        <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: "#FFF500" }}>OUR HIVE</Text>
+        <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: '#FFF500' }}>
+          OUR HIVE
+        </Text>
       </View>
       <View style={styles.bodyContainer}>
         <Controller
@@ -45,10 +53,10 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              placeholder="Email"
+              placeholder='Email'
             />
           )}
-          name="email"
+          name='email'
         />
         {errors.email && <Text style={styles.alert}>Correo invalido</Text>}
         <Controller
@@ -64,24 +72,22 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
               onChangeText={onChange}
               value={value}
               secureTextEntry={true}
-              placeholder="Password"
+              placeholder='Password'
             />
           )}
-          name="password"
+          name='password'
         />
         {errors.password && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
-        <ActionButton title="Iniciar Sesión" onPress={handleSubmit(onSubmit)} />
+        <ActionButton title='Iniciar Sesión' onPress={handleSubmit(onSubmit)} />
       </View>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('SignIn')}
-      >
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
         <View style={styles.footer}>
-          <Text style={{ color: "#EEEEEE", fontSize: 20 }}>
+          <Text style={{ color: '#EEEEEE', fontSize: 20 }}>
             ¿No puedes iniciar sesión?
           </Text>
-          <UnderlineText title="Crear Cuenta" />
+          <UnderlineText title='Crear Cuenta' />
         </View>
       </TouchableOpacity>
     </View>
@@ -91,9 +97,9 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#1A1C27",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#1A1C27',
   },
   image: {
     width: 150,
@@ -102,15 +108,15 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 50,
-    fontWeight: "bold",
-    fontFamily: "Nosifer",
-    color: "#FFF500",
+    fontWeight: 'bold',
+    fontFamily: 'Nosifer',
+    color: '#FFF500',
     marginBottom: 10,
   },
   separator: {
     marginVertical: 50,
     height: 1,
-    width: "80%",
+    width: '80%',
   },
   input: {
     height: 50,
@@ -118,36 +124,36 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-    backgroundColor: "white",
-    borderColor: "yellow",
+    backgroundColor: 'white',
+    borderColor: 'yellow',
     borderRadius: 10,
     marginBottom: 10,
     marginTop: 20,
     fontSize: 20,
   },
   alert: {
-    color: "red",
+    color: 'red',
   },
   header: {
-    position: "absolute",
+    position: 'absolute',
     top: 180,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   bodyContainer: {
-    position: "absolute",
-    top: "57%", // Coloca el centro vertical en el 50% de la pantalla
-    left: "48%", // Coloca el centro horizontal en el 50% de la pantalla
+    position: 'absolute',
+    top: '57%', // Coloca el centro vertical en el 50% de la pantalla
+    left: '48%', // Coloca el centro horizontal en el 50% de la pantalla
     transform: [{ translateX: -150 }, { translateY: -100 }], // Ajusta la posición
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   footer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0,
     marginBottom: 20,
     marginLeft: 30,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

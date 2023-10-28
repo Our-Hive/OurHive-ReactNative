@@ -5,20 +5,14 @@ import SignIn from '../auth/signIn/ui/SingInScreen';
 
 const Stack = createNativeStackNavigator();
 const config = {
-  headerShown: false
-}
+  headerShown: false,
+};
 
 export default function AuthStackNavigation() {
   return (
-    <Stack.Navigator
-      initialRouteName='Login'
-    >
-      <Stack.Screen name="Login" component={LoginScreen}
-        options={config}
-      />
-      <Stack.Screen name="SignIn" component={SignIn}
-        options={config}
-      />
+    <Stack.Navigator initialRouteName='Login'>
+      <Stack.Screen name='Login' component={LoginScreen} options={config} />
+      <Stack.Screen name='SignIn' component={SignIn} options={config} />
     </Stack.Navigator>
   );
 }

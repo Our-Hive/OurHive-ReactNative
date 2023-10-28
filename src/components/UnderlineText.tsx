@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 type Props = {
   title: string;
@@ -25,16 +25,18 @@ export default function CustomText({ title }: Props) {
         pressed && isPressed && styles.touchablePressed,
       ]}
     >
-      <Text style={[styles.text, isPressed && styles.textPressed]}>{title}</Text>
+      <Text style={[styles.text, isPressed && styles.textPressed]}>
+        {title}
+      </Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
-    textDecorationLine: "underline",
+    textDecorationLine: 'underline',
   },
   textPressed: {
     color: 'darkgray', // Cambia el color del texto cuando se presiona
@@ -44,5 +46,5 @@ const styles = StyleSheet.create({
   },
   touchablePressed: {
     opacity: 0.7,
-  }
+  },
 });

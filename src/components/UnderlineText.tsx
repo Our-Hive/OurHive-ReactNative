@@ -3,9 +3,10 @@ import { Pressable, StyleSheet, Text } from 'react-native';
 
 type Props = {
   title: string;
+  onPress: () => void;
 };
 
-export default function CustomText({ title }: Props) {
+export default function CustomText({ title, onPress }: Props) {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressIn = () => {
@@ -18,6 +19,7 @@ export default function CustomText({ title }: Props) {
 
   return (
     <Pressable
+      onPress={onPress}
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       style={({ pressed }) => [

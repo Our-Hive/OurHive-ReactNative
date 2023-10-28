@@ -5,7 +5,6 @@ import {
   Text,
   TextInput,
   View,
-  TouchableOpacity,
 } from 'react-native';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
@@ -117,14 +116,15 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
         )}
         <ActionButton title='Registrate' onPress={handleSubmit(onSubmit)} />
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <View style={styles.footer}>
-          <Text style={{ color: '#ff0000', fontSize: 20 }}>
-            ¿Ya tienes una cuenta?
-          </Text>
-          <UnderlineText title='Iniciar Sesión' />
-        </View>
-      </TouchableOpacity>
+      <View style={styles.footer}>
+        <Text style={{ color: 'white', fontSize: 20 }}>
+          ¿Ya tienes una cuenta?
+        </Text>
+        <UnderlineText
+          title='Iniciar Sesión'
+          onPress={() => navigation.navigate('Login')}
+        />
+      </View>
     </View>
   );
 }

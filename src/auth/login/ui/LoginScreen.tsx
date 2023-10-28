@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import ActionButton from '../../../components/ActionButton';
@@ -82,14 +81,15 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
         )}
         <ActionButton title='Iniciar Sesión' onPress={handleSubmit(onSubmit)} />
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-        <View style={styles.footer}>
-          <Text style={{ color: '#EEEEEE', fontSize: 20 }}>
-            ¿No puedes iniciar sesión?
-          </Text>
-          <UnderlineText title='Crear Cuenta' />
-        </View>
-      </TouchableOpacity>
+      <View style={styles.footer}>
+        <Text style={{ color: '#EEEEEE', fontSize: 20 }}>
+          ¿No puedes iniciar sesión?
+        </Text>
+        <UnderlineText
+          title='Crear Cuenta'
+          onPress={() => navigation.navigate('SignIn')}
+        />
+      </View>
     </View>
   );
 }

@@ -1,0 +1,17 @@
+export enum Colors {
+  backgroundPage = '#1A1C27',
+  green = '#57C877',
+  greenDark = '#001D05',
+  red = '#F42A55',
+  redDark = '#1D0000',
+  yellow = '#FFF170',
+  yellowDak = '#',
+  purple = '#9C21E8',
+  purpleDown = '#6100FF',
+  prupleDark = '#28083C',
+  blueDark = '#030055',
+  blueDark2 = '#00061D',
+  brown = '#312006',
+  brownDark = '#2C1500',
+  cream = 'E9E4BB',
+}

@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Image,
-} from 'react-native';
+import { StyleSheet, View, Text, TextInput, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
@@ -79,7 +73,10 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
         {errors.password && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
-        <ActionButton title='Iniciar Sesión' onPress={handleSubmit(onSubmit)} />
+        <ActionButton
+          title='Iniciar Sesión'
+          onPress={() => navigation.navigate('MainBottomBar')}
+        />
       </View>
       <View style={styles.footer}>
         <Text style={{ color: '#EEEEEE', fontSize: 20 }}>

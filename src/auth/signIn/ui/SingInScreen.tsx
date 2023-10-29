@@ -1,17 +1,10 @@
 import { Controller, useForm } from 'react-hook-form';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
 import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
 
 export default function SignInScreen({ navigation }: { navigation: any }) {
-
   useFonts({
     Nosifer: Nosifer_400Regular,
   });
@@ -25,7 +18,7 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
       email: '',
       username: '',
       password: '',
-      repassword: '',
+      confirmPassword: '',
     },
   });
 
@@ -38,7 +31,9 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
           source={require('../../../../assets/bee.png')}
           style={styles.image}
         />
-        <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: '#FFF500' }}>OUR HIVE</Text>
+        <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: '#FFF500' }}>
+          OUR HIVE
+        </Text>
       </View>
       <View style={styles.bodyContainer}>
         <Controller
@@ -112,12 +107,12 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
               onChangeText={onChange}
               value={value}
               secureTextEntry={true}
-              placeholder='Re-password'
+              placeholder='Confirm Password'
             />
           )}
-          name='repassword'
+          name='confirmPassword'
         />
-        {errors.repassword && (
+        {errors.confirmPassword && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
         <ActionButton title='Registrate' onPress={handleSubmit(onSubmit)} />

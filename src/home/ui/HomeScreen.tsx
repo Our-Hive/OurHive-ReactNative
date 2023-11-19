@@ -1,8 +1,19 @@
 import { Text, View, Image, StyleSheet, Pressable } from 'react-native';
 import DiaryButton from './components/DiaryButton';
 import { Colors } from '../../Constants/Colors';
+import { useState } from 'react';
 
 export default function HomeScreen() {
+  const [isPressed, setIsPressed] = useState(false);
+
+  const handlePressIn = () => {
+    setIsPressed(true);
+  };
+
+  const handlePressOut = () => {
+    setIsPressed(false);
+  };
+
   return (
     <View
       style={{
@@ -25,8 +36,15 @@ export default function HomeScreen() {
         />
         <Text style={styles.title}>Registro emocional</Text>
       </View>
-      <View style={{margin: 20}}>
-        <Pressable>
+      <View style={{ margin: 20 }}>
+        <Pressable
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+          style={({ pressed }) => [
+            pressed &&
+              isPressed && { backgroundColor: Colors.red, borderRadius: 15 },
+          ]}
+        >
           <DiaryButton
             backgroundColor={Colors.yellow}
             outlining={Colors.red}
@@ -34,10 +52,17 @@ export default function HomeScreen() {
             image='2'
           />
         </Pressable>
-        <Pressable>
+        <Pressable
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+          style={({ pressed }) => [
+            pressed &&
+              isPressed && { backgroundColor: '#305B6F', borderRadius: 15 },
+          ]}
+        >
           <DiaryButton
-            backgroundColor={Colors.yellow}
-            outlining={Colors.redDark}
+            backgroundColor='#51BDBF'
+            outlining='#305B6F'
             title='Diario Emocional'
             image='1'
           />
@@ -58,5 +83,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFF500',
     marginBottom: 10,
+  },
+
+  buttonPressed: {
+    backgroundColor: Colors.red,
+    borderRadius: 15,
   },
 });

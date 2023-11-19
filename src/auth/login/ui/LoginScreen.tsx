@@ -1,8 +1,16 @@
-import { StyleSheet, View, Text, TextInput, Image } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Image, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
 import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthContext';
+import { isLogin } from '../data/loginService';
+
+export type FormData = {
+  email: string;
+  password: string;
+};
 
 export default function LoginScreen({ navigation }: { navigation: any }) {
   useFonts({
@@ -19,9 +27,15 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
       password: '',
     },
   });
-
-  const onSubmit = (data: any) => console.log(data);
-
+  const { setIsAuth } = useContext(AuthContext);
+  const onSubmit = async (userInfo: FormData) => {
+    const login = await isLogin(userInfo);
+    if (login) {
+      return setIsAuth(true);
+    } else {
+      Alert.alert('Error', 'Email o contraseña incorrectos');
+    }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -73,10 +87,7 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
         {errors.password && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
-        <ActionButton
-          title='Iniciar Sesión'
-          onPress={() => navigation.navigate('MainBottomBar')}
-        />
+        <ActionButton title='Iniciar Sesión' onPress={handleSubmit(onSubmit)} />
       </View>
       <View style={styles.footer}>
         <Text style={{ color: '#EEEEEE', fontSize: 20 }}>

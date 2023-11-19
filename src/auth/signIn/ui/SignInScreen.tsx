@@ -1,10 +1,21 @@
 import { Controller, useForm } from 'react-hook-form';
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
 import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
+import { isRegister } from '../data/signInService';
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthContext';
+
+export type SignInData = {
+  email: string;
+  username: string;
+  password: string;
+  confirmPassword: string;
+};
 
 export default function SignInScreen({ navigation }: { navigation: any }) {
+  const { setIsAuth } = useContext(AuthContext);
   useFonts({
     Nosifer: Nosifer_400Regular,
   });
@@ -22,7 +33,18 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
     },
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = async (data: SignInData) => {
+    if (data.password !== data.confirmPassword) {
+      return Alert.alert('Las contraseñas no coinciden');
+    }
+    const register = await isRegister(data);
+    if (register) {
+      Alert.alert('Usuario registrado :D Inicia Sesión');
+      setIsAuth(true);
+    } else {
+      Alert.alert('Error al registrar');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -115,7 +137,7 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
         {errors.confirmPassword && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
-        <ActionButton title='Registrate' onPress={handleSubmit(onSubmit)} />
+        <ActionButton title='Regístrate' onPress={handleSubmit(onSubmit)} />
       </View>
       <View style={styles.footer}>
         <Text style={{ color: 'white', fontSize: 20 }}>

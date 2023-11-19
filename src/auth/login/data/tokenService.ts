@@ -1,4 +1,4 @@
-import { getToken } from '../domain/JwtStorage';
+/* import { getToken } from '../domain/JwtStorage';
 import { BASE_URL } from '../domain/constants';
 
 const fetchData = async (path: string) => {
@@ -11,16 +11,16 @@ const fetchData = async (path: string) => {
       const response = await fetch(`${BASE_URL}/${path}`, { headers });
       if (response.ok) {
         const data = await response.json();
-        //TODO: Manejar la data
+        TODO: Manejar la data
       } else {
-        //TODO: Manejar errores
+        TODO: Manejar errores
       }
     } catch (err) {
       console.error('Error en la solicitd HTTP:', err);
     }
   } else {
-    //TODO: Manejar el error
+    TODO: Manejar el error
   }
 };
 
-export { fetchData };
+export { fetchData }; */

@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import LoginScreen from '../auth/login/ui/LoginScreen';
-import SignIn from '../auth/signIn/ui/SignInScreen';
+import SignUp from '../auth/signUp/ui/SignUpScreen';
 import MainBottomBar from './MainBottomBar';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
@@ -26,7 +26,7 @@ export default function AuthStackNavigation() {
       ) : (
         <Stack.Group>
           <Stack.Screen name='Login' component={LoginScreen} options={config} />
-          <Stack.Screen name='SignIn' component={SignIn} options={config} />
+          <Stack.Screen name='SignUp' component={SignUp} options={config} />
         </Stack.Group>
       )}
     </Stack.Navigator>

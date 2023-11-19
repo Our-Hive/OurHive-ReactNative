@@ -12,6 +12,7 @@ export type FormData = {
   password: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function LoginScreen({ navigation }: { navigation: any }) {
   useFonts({
     Nosifer: Nosifer_400Regular,
@@ -95,7 +96,7 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
         </Text>
         <UnderlineText
           title='Crear Cuenta'
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('SignUp')}
         />
       </View>
     </View>

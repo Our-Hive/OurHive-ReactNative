@@ -22,7 +22,7 @@ export const isLogin = async (credentials: FormData) => {
       return false;
     }
   } catch (err) {
-    console.error('Error en la solicitud HTTP:', err);
+    console.error('Error en la solicitud HTTP1:', err);
     return false;
   }
 };

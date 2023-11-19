@@ -3,18 +3,19 @@ import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import ActionButton from '../../../components/ActionButton';
 import UnderlineText from '../../../components/UnderlineText';
 import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
-import { isRegister } from '../data/signInService';
+import { isRegister } from '../data/signUpService';
 import { useContext } from 'react';
 import { AuthContext } from '../../../context/AuthContext';
 
-export type SignInData = {
+export type SignUpData = {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
+  passwordConfirmation: string;
 };
 
-export default function SignInScreen({ navigation }: { navigation: any }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function SignUpScreen({ navigation }: { navigation: any }) {
   const { setIsAuth } = useContext(AuthContext);
   useFonts({
     Nosifer: Nosifer_400Regular,
@@ -29,12 +30,14 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
       email: '',
       username: '',
       password: '',
-      confirmPassword: '',
+      passwordConfirmation: '',
     },
   });
 
-  const onSubmit = async (data: SignInData) => {
-    if (data.password !== data.confirmPassword) {
+  const onSubmit = async (data: SignUpData) => {
+    console.log(data);
+    
+    if (data.password !== data.passwordConfirmation) {
       return Alert.alert('Las contraseñas no coinciden');
     }
     const register = await isRegister(data);
@@ -132,9 +135,9 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
               placeholder='Confirm Password'
             />
           )}
-          name='confirmPassword'
+          name='passwordConfirmation'
         />
-        {errors.confirmPassword && (
+        {errors.passwordConfirmation && (
           <Text style={styles.alert}>Este campo es obligatorio.</Text>
         )}
         <ActionButton title='Regístrate' onPress={handleSubmit(onSubmit)} />

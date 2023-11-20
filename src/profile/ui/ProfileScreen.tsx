@@ -1,22 +1,34 @@
-import { Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { Colors } from '../../Constants/Colors';
-import { Controller, useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getUserData } from '../data/profileService';
+
+type userData = {
+  email: string;
+  username: string;
+};
 
 export default function ProfileScreen() {
-
   const [isPressed, setIsPressed] = useState(false);
-
-  const  {
-    control,
-  } = useForm({
-    defaultValues: {
-      email: '',
-      username: '',
-      password: '',
-      fullName: '',
-    }
+  const [user, setUser] = useState<userData>({
+    email: '',
+    username: '',
   });
+  useEffect(() => {
+    getUserData().then((data) =>
+      setUser({
+        email: data?.email,
+        username: data?.username,
+      })
+    );
+  }, []);
 
   return (
     <View
@@ -41,39 +53,13 @@ export default function ProfileScreen() {
         <Text style={styles.title}>Perfil</Text>
       </View>
       <View>
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-            pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder='Email'
-            />
-          )}
-          name='email'
-        />
-        <Controller
-          control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={styles.input}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder='Username'
-            />
-          )}
-          name='username'
-        />
+        <TextInput style={styles.input} editable={false}>
+          {user.username}
+        </TextInput>
+        <TextInput style={styles.input} editable={false}>
+          {user.email}
+        </TextInput>
+
         <Pressable
           onPressIn={() => setIsPressed(true)}
           onPressOut={() => setIsPressed(false)}
@@ -87,7 +73,7 @@ export default function ProfileScreen() {
               justifyContent: 'center',
             }}
           >
-            <Text style={{color: 'white'}}>Deshabilitar usuario</Text>
+            <Text style={{ color: 'white' }}>Deshabilitar usuario</Text>
           </View>
         </Pressable>
       </View>
@@ -122,5 +108,5 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: Colors.red,
-  }
+  },
 });

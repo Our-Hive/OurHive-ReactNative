@@ -16,5 +16,5 @@ export enum Colors {
   brownDark = '#2C1500',
   cream = 'E9E4BB',
   pink = '#FFB6C1',
-  pinkDark = '#FF69B4',
+  pinkDark = '#91074c',
 }

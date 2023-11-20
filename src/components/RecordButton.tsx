@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors } from '../Constants/Colors';
 import { FontAwesome5 } from '@expo/vector-icons/';
+import { Emotions } from '../Constants/Emotions';
 
 type Props = {
   backgroundColor: string;
   color: string;
   emotionPrimary: string;
-  emotionSecondary: string;
+  emotionSecondary?: string;
 };
 
 export default function RecordButton({
@@ -38,9 +39,13 @@ export default function RecordButton({
         }}
       ></View>
       <View style={styles.center}>
-        <Text
-          style={styles.title}
-        >{`${emotionPrimary}, ${emotionSecondary}`}</Text>
+        {!emotionSecondary ? (
+          <Text style={styles.title}>{`${emotionPrimary}`}</Text>
+        ) : (
+          <Text
+            style={styles.title}
+          >{`${emotionPrimary}, ${emotionSecondary}`}</Text>
+        )}
         <View
           style={{
             backgroundColor: color,
@@ -51,7 +56,8 @@ export default function RecordButton({
         >
           <Text
             style={
-              color == Colors.yellowDark
+              emotionPrimary == Emotions.HAPPY ||
+              emotionPrimary == Emotions.SURPRISE
                 ? { color: Colors.brownDark, fontWeight: 'bold', fontSize: 18 }
                 : { color: 'white', fontWeight: 'bold', fontSize: 18 }
             }

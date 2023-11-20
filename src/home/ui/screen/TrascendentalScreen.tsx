@@ -1,10 +1,10 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
-import { Colors } from '../../Constants/Colors';
+import { Colors } from '../../../Constants/Colors';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 
-export default function TrascendentalDiary() {
+export default function TrascendentalScreen() {
   const [isPressed, setIsPressed] = useState(false);
 
   const { control } = useForm({
@@ -38,7 +38,7 @@ export default function TrascendentalDiary() {
         <Text style={styles.title}>Emocional Trascendental</Text>
       </View>
       <View>
-        <Text style={{color: 'white'}}>¿Con quién viviste la emoción?</Text>
+        <Text style={{ color: 'white' }}>¿Con quién viviste la emoción?</Text>
         <Controller
           control={control}
           rules={{
@@ -55,7 +55,7 @@ export default function TrascendentalDiary() {
           )}
           name='who'
         />
-        <Text style={{color: 'white'}}>¿Donde sucedió?</Text>
+        <Text style={{ color: 'white' }}>¿Donde sucedió?</Text>
         <Controller
           control={control}
           rules={{
@@ -72,7 +72,7 @@ export default function TrascendentalDiary() {
           )}
           name='where'
         />
-        <Text style={{color: 'white'}}>¿Qué hacías?</Text>
+        <Text style={{ color: 'white' }}>¿Qué hacías?</Text>
         <Controller
           control={control}
           rules={{
@@ -90,7 +90,7 @@ export default function TrascendentalDiary() {
           name='doing'
         />
         <Pressable
-          style={{width: 270}}
+          style={{ width: 270 }}
           onPressIn={() => setIsPressed(true)}
           onPressOut={() => setIsPressed(false)}
         >
@@ -103,7 +103,9 @@ export default function TrascendentalDiary() {
               justifyContent: 'center',
             }}
           >
-            <Text style={{color: Colors.backgroundPage}}>Guardar registro</Text>
+            <Text style={{ color: Colors.backgroundPage }}>
+              Guardar registro
+            </Text>
           </View>
         </Pressable>
       </View>

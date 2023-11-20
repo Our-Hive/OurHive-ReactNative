@@ -5,6 +5,7 @@ import SignUp from '../auth/ui/SignUpScreen';
 import MainBottomBar from './MainBottomBar';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import DailyStackNavigation from './DailyStackNavigation';
 
 const Stack = createNativeStackNavigator();
 const config = {
@@ -20,6 +21,11 @@ export default function AuthStackNavigation() {
           <Stack.Screen
             name='MainBottomBar'
             component={MainBottomBar}
+            options={config}
+          />
+          <Stack.Screen
+            name='DailyStackNavigation'
+            component={DailyStackNavigation}
             options={config}
           />
         </Stack.Group>

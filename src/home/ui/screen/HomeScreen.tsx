@@ -3,7 +3,7 @@ import DiaryButton from '../components/DiaryButton';
 import { Colors } from '../../../Constants/Colors';
 import { useState } from 'react';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }: { navigation: any }) {
   const [isPressed, setIsPressed] = useState(false);
 
   const handlePressIn = () => {
@@ -44,6 +44,9 @@ export default function HomeScreen() {
             pressed &&
               isPressed && { backgroundColor: Colors.red, borderRadius: 15 },
           ]}
+          onPress={() => {
+            console.log('pressed emoción trascendental');
+          }}
         >
           <DiaryButton
             backgroundColor={Colors.yellow}
@@ -59,6 +62,10 @@ export default function HomeScreen() {
             pressed &&
               isPressed && { backgroundColor: '#305B6F', borderRadius: 15 },
           ]}
+          onPress={() => {
+            console.log('Diario Emocional');
+            navigation.navigate('DailyStackNavigation');
+          }}
         >
           <DiaryButton
             backgroundColor='#51BDBF'

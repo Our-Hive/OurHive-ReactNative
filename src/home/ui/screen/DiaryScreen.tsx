@@ -6,11 +6,11 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { Colors } from '../../Constants/Colors';
+import { Colors } from '../../../Constants/Colors';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
 
-export default function DiaryForm() {
+export default function DiaryScreen() {
   const [isPressed, setIsPressed] = useState(false);
 
   const { control } = useForm({
@@ -37,7 +37,7 @@ export default function DiaryForm() {
         }}
       >
         <Image
-          source={require('../../../assets/bee.png')}
+          source={require('../../../../assets/bee.png')}
           style={styles.image}
         />
         <Text style={styles.title}>Formulario Diario</Text>
@@ -56,7 +56,7 @@ export default function DiaryForm() {
             value={value}
             multiline={true}
             numberOfLines={4}
-            placeholder='Expresate aquí :D'
+            placeholder='Exprésate aquí :D'
           />
         )}
         name='text'

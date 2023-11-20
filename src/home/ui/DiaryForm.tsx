@@ -10,7 +10,7 @@ import { Colors } from '../../Constants/Colors';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
 
-export default function HomeScreen() {
+export default function DiaryForm() {
   const [isPressed, setIsPressed] = useState(false);
 
   const { control } = useForm({

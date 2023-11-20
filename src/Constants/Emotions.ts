@@ -7,38 +7,9 @@ export enum Emotions {
   DISGUST = 'Asco',
 }
 
-export const Happy = [
-  {GRATITUDE : 'Gratitud'},
-  {SATISFACTION : 'Satisfacción'},
-  {EUPHORIA : 'Euforia'},
-];
-
-export const Sad = [
-  {MELANCHOLY : 'Melancolía'},
-  {LONELY : 'Soledad'},
-  {DISCOURAGEMENT : 'Desánimo'},
-];
-
-export const Angry = [
-  {HATE : 'Odio'},
-  {RAGE : 'Rabia'},
-  {ANNOYANCE : 'Molestia'},
-];
-
-export const Fear = [
-  {TERROR : 'Terror'},
-  {NERVOUS : 'Nerviosismo'},
-  {WORRY : 'Preocupación'},
-];
-
-export const Surprise = [
-  {PERPLEXITY : 'Perplejidad'},
-  {CURIOSITY : 'Curiosidad'},
-  {CONFUSION : 'Confusión'},
-];
-
-export const Disgust = [
-  {REJECTION : 'Rechazo'},
-  {DISAPPROVAL : 'Desaprobación'},
-  {DISCOMFORT : 'Incomodidad'},
-];
+export enum Angry {
+  HATE = 'HATE',
+  RAGE = 'RAGE',
+  ANNOYANCE = 'ANNOYANCE',
+}
+export const arrayAngry: string[] = [Angry.HATE, Angry.RAGE, Angry.ANNOYANCE];

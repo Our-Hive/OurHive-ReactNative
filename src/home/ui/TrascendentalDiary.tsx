@@ -1,21 +1,18 @@
-import { Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Colors } from '../../Constants/Colors';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { TextInput } from 'react-native-gesture-handler';
 
-export default function ProfileScreen() {
-
+export default function TrascendentalDiary() {
   const [isPressed, setIsPressed] = useState(false);
 
-  const  {
-    control,
-  } = useForm({
+  const { control } = useForm({
     defaultValues: {
-      email: '',
-      username: '',
-      password: '',
-      fullName: '',
-    }
+      who: '',
+      where: '',
+      doing: '',
+    },
   });
 
   return (
@@ -28,36 +25,37 @@ export default function ProfileScreen() {
     >
       <View
         style={{
-          top: 0,
           alignItems: 'center',
           justifyContent: 'center',
           marginBottom: 30,
+          top: 0,
         }}
       >
         <Image
           source={require('../../../assets/bee.png')}
           style={styles.image}
         />
-        <Text style={styles.title}>Perfil</Text>
+        <Text style={styles.title}>Emocional Trascendental</Text>
       </View>
       <View>
+        <Text style={{color: 'white'}}>¿Con quién viviste la emoción?</Text>
         <Controller
           control={control}
           rules={{
             required: true,
-            pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={onChange}
+              onChange={onChange}
               value={value}
-              placeholder='Email'
+              placeholder='Familiar'
             />
           )}
-          name='email'
+          name='who'
         />
+        <Text style={{color: 'white'}}>¿Donde sucedió?</Text>
         <Controller
           control={control}
           rules={{
@@ -67,27 +65,45 @@ export default function ProfileScreen() {
             <TextInput
               style={styles.input}
               onBlur={onBlur}
-              onChangeText={onChange}
+              onChange={onChange}
               value={value}
-              placeholder='Username'
+              placeholder='Gimnasio'
             />
           )}
-          name='username'
+          name='where'
+        />
+        <Text style={{color: 'white'}}>¿Qué hacías?</Text>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              onBlur={onBlur}
+              onChange={onChange}
+              value={value}
+              placeholder='Ejercicio'
+            />
+          )}
+          name='doing'
         />
         <Pressable
+          style={{width: 270}}
           onPressIn={() => setIsPressed(true)}
           onPressOut={() => setIsPressed(false)}
         >
           <View
             style={{
-              backgroundColor: isPressed ? Colors.redDark : Colors.red,
+              backgroundColor: isPressed ? Colors.greenDark : Colors.green,
               padding: 10,
               borderRadius: 10,
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
-            <Text style={{color: 'white'}}>Deshabilitar usuario</Text>
+            <Text style={{color: Colors.backgroundPage}}>Guardar registro</Text>
           </View>
         </Pressable>
       </View>
@@ -102,10 +118,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    fontSize: 40,
+    fontSize: 35,
     fontWeight: 'bold',
     color: '#FFF500',
     marginBottom: 10,
+    paddingRight: 10,
   },
   input: {
     height: 50,
@@ -120,7 +137,4 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 20,
   },
-  button: {
-    backgroundColor: Colors.red,
-  }
 });

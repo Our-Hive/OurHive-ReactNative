@@ -1,11 +1,11 @@
 import { Controller, useForm } from 'react-hook-form';
 import { Alert, Image, StyleSheet, Text, TextInput, View } from 'react-native';
-import ActionButton from '../../../components/ActionButton';
-import UnderlineText from '../../../components/UnderlineText';
+import ActionButton from '../../components/ActionButton';
+import UnderlineText from '../../components/UnderlineText';
 import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
 import { isRegister } from '../data/signUpService';
 import { useContext } from 'react';
-import { AuthContext } from '../../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 export type SignUpData = {
   email: string;
@@ -36,13 +36,13 @@ export default function SignUpScreen({ navigation }: { navigation: any }) {
 
   const onSubmit = async (data: SignUpData) => {
     console.log(data);
-    
+
     if (data.password !== data.passwordConfirmation) {
       return Alert.alert('Las contraseñas no coinciden');
     }
     const register = await isRegister(data);
     if (register) {
-      Alert.alert('Usuario registrado :D Inicia Sesión');
+      Alert.alert('Usuario registrado :D');
       setIsAuth(true);
     } else {
       Alert.alert('Error al registrar');
@@ -53,7 +53,7 @@ export default function SignUpScreen({ navigation }: { navigation: any }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('../../../../assets/bee.png')}
+          source={require('../../../assets/bee.png')}
           style={styles.image}
         />
         <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: '#FFF500' }}>

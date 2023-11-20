@@ -1,10 +1,10 @@
 import { StyleSheet, View, Text, TextInput, Image, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import ActionButton from '../../../components/ActionButton';
-import UnderlineText from '../../../components/UnderlineText';
+import ActionButton from '../../components/ActionButton';
+import UnderlineText from '../../components/UnderlineText';
 import { useFonts, Nosifer_400Regular } from '@expo-google-fonts/nosifer';
 import { useContext } from 'react';
-import { AuthContext } from '../../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import { isLogin } from '../data/loginService';
 
 export type FormData = {
@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }: { navigation: any }) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('../../../../assets/bee.png')}
+          source={require('../../../assets/bee.png')}
           style={styles.image}
         />
         <Text style={{ fontFamily: 'Nosifer', fontSize: 50, color: '#FFF500' }}>

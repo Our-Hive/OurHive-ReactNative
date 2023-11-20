@@ -1,6 +1,6 @@
 import { Text, View, Image, StyleSheet, Pressable } from 'react-native';
-import DiaryButton from './components/DiaryButton';
-import { Colors } from '../../Constants/Colors';
+import DiaryButton from '../components/DiaryButton';
+import { Colors } from '../../../Constants/Colors';
 import { useState } from 'react';
 
 export default function HomeScreen() {
@@ -31,7 +31,7 @@ export default function HomeScreen() {
         }}
       >
         <Image
-          source={require('../../../assets/bee.png')}
+          source={require('../../../../assets/bee.png')}
           style={styles.image}
         />
         <Text style={styles.title}>Registro emocional</Text>
@@ -49,7 +49,7 @@ export default function HomeScreen() {
             backgroundColor={Colors.yellow}
             outlining={Colors.red}
             title='Emoción Trascendental'
-            image='2'
+            image='1'
           />
         </Pressable>
         <Pressable
@@ -64,7 +64,7 @@ export default function HomeScreen() {
             backgroundColor='#51BDBF'
             outlining='#305B6F'
             title='Diario Emocional'
-            image='1'
+            image='2'
           />
         </Pressable>
       </View>

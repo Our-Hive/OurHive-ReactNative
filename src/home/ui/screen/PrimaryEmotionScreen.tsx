@@ -27,9 +27,8 @@ export default function PrimaryEmotionScreen({
       <Pressable
         onPress={() => {
           setDailyData({
-            primaryEmotion: Emotions.HAPPY,
-            secondaryEmotion: '',
-            description: '',
+            ...dailyData,
+            primaryEmotion: Emotions.HAPPY.toString(),
           });
           navigation.navigate('SecondaryEmotion');
         }}
@@ -43,9 +42,8 @@ export default function PrimaryEmotionScreen({
       <Pressable
         onPress={() => {
           setDailyData({
+            ...dailyData,
             primaryEmotion: Emotions.ANGRY,
-            secondaryEmotion: '',
-            description: '',
           });
           navigation.navigate('SecondaryEmotion');
         }}
@@ -59,9 +57,8 @@ export default function PrimaryEmotionScreen({
       <Pressable
         onPress={() => {
           setDailyData({
+            ...dailyData,
             primaryEmotion: Emotions.SAD,
-            secondaryEmotion: '',
-            description: '',
           });
           navigation.navigate('SecondaryEmotion');
         }}
@@ -75,9 +72,8 @@ export default function PrimaryEmotionScreen({
       <Pressable
         onPress={() => {
           setDailyData({
+            ...dailyData,
             primaryEmotion: Emotions.FEAR,
-            secondaryEmotion: '',
-            description: '',
           });
           navigation.navigate('SecondaryEmotion');
         }}
@@ -91,9 +87,8 @@ export default function PrimaryEmotionScreen({
       <Pressable
         onPress={() => {
           setDailyData({
+            ...dailyData,
             primaryEmotion: Emotions.SURPRISE,
-            secondaryEmotion: '',
-            description: '',
           });
           navigation.navigate('SecondaryEmotion');
         }}
@@ -107,9 +102,8 @@ export default function PrimaryEmotionScreen({
       <Pressable
         onPress={() => {
           setDailyData({
+            ...dailyData,
             primaryEmotion: Emotions.DISGUST,
-            secondaryEmotion: '',
-            description: '',
           });
           navigation.navigate('SecondaryEmotion');
         }}

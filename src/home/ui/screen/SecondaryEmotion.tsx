@@ -53,6 +53,8 @@ export default function SecondaryEmotionScreen({
       arrayEmotion = [];
       break;
   }
+  console.log('DAILY DATA');
+  console.log(dailyData);
   return (
     <SafeAreaView>
       {/*
@@ -75,7 +77,10 @@ export default function SecondaryEmotionScreen({
           )}
         />
             */}
+      <Text>HOLII</Text>
       <Text>{dailyData.primaryEmotion}</Text>
+      <Text>{dailyData.secondaryEmotion}</Text>
+      <Text>{dailyData.description}</Text>
     </SafeAreaView>
   );
 }

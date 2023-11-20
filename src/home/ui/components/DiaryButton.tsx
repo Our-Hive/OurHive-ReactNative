@@ -2,8 +2,8 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { View, Text, Image } from 'react-native';
 
 const images = {
-  image1: require('../../../../assets/bee-icon.png'),
-  image2: require('../../../../assets/bee.png'),
+  image1: require('../../../../assets/trascendental.jpeg'),
+  image2: require('../../../../assets/emociones.png'),
 };
 
 type Props = {
@@ -17,10 +17,10 @@ export default function RecordButton({
   backgroundColor,
   outlining,
   title,
-  image
+  image,
 }: Props) {
-  const imReal = image === '1' ? images.image1 : images.image2;
-  console.log(imReal);
+  const imgReal = image === '1' ? images.image1 : images.image2;
+  console.log(imgReal);
   return (
     <View
       style={{
@@ -42,7 +42,10 @@ export default function RecordButton({
         }}
       >
         <View>
-          <Image style={{height: 120, width: 120}} source={imReal} />
+          <Image
+            style={{ height: 120, width: 120, borderRadius: 20 }}
+            source={imgReal}
+          />
         </View>
         <View
           style={{

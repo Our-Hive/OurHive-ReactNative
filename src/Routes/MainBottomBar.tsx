@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../home/ui/HomeScreen';
+import HomeScreen from '../home/ui/screen/HomeScreen';
 import InformationScreen from '../info/ui/InformationScreen';
 import MySpaceScreen from '../mySpace/ui/MySpaceScreen';
 import ProfileScreen from '../profile/ui/ProfileScreen';
@@ -11,14 +11,31 @@ const Tab = createBottomTabNavigator();
 
 export default function MainBottomBar() {
   return (
-    <Tab.Navigator initialRouteName='Home'>
+    <Tab.Navigator
+      initialRouteName='Home'
+      screenOptions={{
+        tabBarActiveTintColor: Colors.purpleDown,
+        tabBarStyle: {
+          backgroundColor: Colors.yellow,
+          elevation: 0,
+        },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: 'bold',
+        },
+      }}
+    >
       <Tab.Screen
         name='Profile'
         component={ProfileScreen}
         options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ size }) => (
-            <FontAwesome5 name='user-alt' color={Colors.purple} size={size} />
+            <FontAwesome5
+              name='user-alt'
+              color={Colors.purpleDown}
+              size={size}
+            />
           ),
         }}
       />
@@ -28,7 +45,11 @@ export default function MainBottomBar() {
         options={{
           tabBarLabel: 'History',
           tabBarIcon: ({ size }) => (
-            <FontAwesome5 name='history' color={Colors.purple} size={size} />
+            <FontAwesome5
+              name='history'
+              color={Colors.purpleDown}
+              size={size}
+            />
           ),
         }}
       />
@@ -38,7 +59,7 @@ export default function MainBottomBar() {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ size }) => (
-            <FontAwesome5 name='home' color={Colors.purple} size={size} />
+            <FontAwesome5 name='smile' color={Colors.purpleDown} size={size} />
           ),
         }}
       />
@@ -48,7 +69,7 @@ export default function MainBottomBar() {
         options={{
           tabBarLabel: 'MySpace',
           tabBarIcon: ({ size }) => (
-            <FontAwesome name='heart' color={Colors.purple} size={size} />
+            <FontAwesome name='heart' color={Colors.purpleDown} size={size} />
           ),
         }}
       />
@@ -58,7 +79,7 @@ export default function MainBottomBar() {
         options={{
           tabBarLabel: 'Information',
           tabBarIcon: ({ size }) => (
-            <FontAwesome5 name='info' color={Colors.purple} size={size} />
+            <FontAwesome5 name='info' color={Colors.purpleDown} size={size} />
           ),
         }}
       />

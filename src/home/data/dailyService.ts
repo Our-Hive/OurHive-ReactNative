@@ -11,7 +11,6 @@ type Daily = {
 export const createDaily = async ({
   primaryEmotion,
   secondaryEmotion,
-  title,
   description,
 }: Daily) => {
   const token = await getToken();
@@ -27,7 +26,6 @@ export const createDaily = async ({
         body: JSON.stringify({
           primaryEmotion,
           secondaryEmotion,
-          title,
           description,
         }),
       }

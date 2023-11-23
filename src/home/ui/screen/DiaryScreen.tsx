@@ -1,6 +1,7 @@
 import {
   Image,
   Pressable,
+  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -9,8 +10,15 @@ import {
 import { Colors } from '../../../Constants/Colors';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { createDaily } from '../../data/dailyService';
 
-export default function DiaryScreen() {
+export default function DiaryScreen({
+  navigation,
+  route,
+}: {
+  navigation: any;
+  route: any;
+}) {
   const [isPressed, setIsPressed] = useState(false);
 
   const { control } = useForm({
@@ -20,7 +28,7 @@ export default function DiaryScreen() {
   });
 
   return (
-    <View
+    <SafeAreaView
       style={{
         backgroundColor: Colors.backgroundPage,
         height: '100%',
@@ -64,6 +72,9 @@ export default function DiaryScreen() {
       <Pressable
         onPressIn={() => setIsPressed(true)}
         onPressOut={() => setIsPressed(false)}
+        onPress={() => {
+          navigation.navigate('HomeScreen');
+        }}
       >
         <View
           style={{
@@ -79,7 +90,7 @@ export default function DiaryScreen() {
           <Text style={{ color: 'white', fontSize: 20 }}>Guardar Registro</Text>
         </View>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 

@@ -26,7 +26,8 @@ export const DailyContext = createContext<IDailyContextProps>(initialDaily);
 
 export function DailyProvider({ children }: Props) {
   const [dailyData, setDailyData] = useState(initialDaily.dailyData);
-
+  console.log('context');
+  console.log(dailyData);
   return (
     <DailyContext.Provider value={{ dailyData, setDailyData }}>
       {children}

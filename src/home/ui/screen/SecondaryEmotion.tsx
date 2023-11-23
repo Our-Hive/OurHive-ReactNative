@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FlatList, Pressable, Text } from 'react-native';
+import { FlatList, Pressable, View } from 'react-native';
 import { DailyContext } from '../../../context/DailyContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -17,14 +17,19 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default function SecondaryEmotionScreen({
   navigation,
+  route,
 }: {
   navigation: any;
+  route: any;
 }) {
+  const { primaryEmotion } = route.params;
+  console.log('route');
+  console.log(primaryEmotion);
   const { setDailyData, dailyData } = useContext(DailyContext);
   let color = Colors.primary;
   let bgColor = Colors.primary;
   let arrayEmotion: string[] = [];
-  switch (dailyData.primaryEmotion) {
+  switch (primaryEmotion) {
     case Emotions.HAPPY:
       [color, bgColor] = evalColor(Emotions.HAPPY);
       arrayEmotion = arrayHappy;
@@ -57,30 +62,31 @@ export default function SecondaryEmotionScreen({
   console.log(dailyData);
   return (
     <SafeAreaView>
-      {/*
-        <FlatList
-          data={arrayEmotion}
-          renderItem={({ item }) => (
-            <Pressable
-              onPress={() => {
-                setDailyData({ ...dailyData, secondaryEmotion: item });
-                navigation.navigate('DiaryScreen');
-              }}
-            >
-              <RecordButton
-                emotionPrimary={dailyData.primaryEmotion}
-                emotionSecondary={item}
-                color={color}
-                backgroundColor={bgColor}
-              />
-            </Pressable>
-          )}
-        />
-            */}
-      <Text>HOLII</Text>
-      <Text>{dailyData.primaryEmotion}</Text>
-      <Text>{dailyData.secondaryEmotion}</Text>
-      <Text>{dailyData.description}</Text>
+      <View style={{ backgroundColor: Colors.backgroundPage }}>
+        {
+          <FlatList
+            data={arrayEmotion}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() => {
+                  setDailyData({ ...dailyData, secondaryEmotion: item });
+                  navigation.navigate('DiaryScreen', {
+                    primaryEmotion: primaryEmotion,
+                    secondaryEmotion: item,
+                  });
+                }}
+              >
+                <RecordButton
+                  emotionPrimary={primaryEmotion}
+                  emotionSecondary={item}
+                  color={color}
+                  backgroundColor={bgColor}
+                />
+              </Pressable>
+            )}
+          />
+        }
+      </View>
     </SafeAreaView>
   );
 }

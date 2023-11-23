@@ -11,7 +11,8 @@ export default function PrimaryEmotionScreen({
 }: {
   navigation: any;
 }) {
-  const { setDailyData, dailyData } = useContext(DailyContext);
+  const { dailyData, setDailyData } = useContext(DailyContext);
+
   const [happyColor, happyBGColor] = evalColor(Emotions.HAPPY);
   const [sadColor, sadBGColor] = evalColor(Emotions.SAD);
   const [angryColor, angryBGColor] = evalColor(Emotions.ANGRY);
@@ -25,12 +26,10 @@ export default function PrimaryEmotionScreen({
   return (
     <SafeAreaView style={{ backgroundColor: Colors.backgroundPage }}>
       <Pressable
-        onPress={() => {
-          setDailyData({
-            ...dailyData,
-            primaryEmotion: Emotions.HAPPY.toString(),
+        onPress={async () => {
+          navigation.navigate('SecondaryEmotion', {
+            primaryEmotion: Emotions.HAPPY,
           });
-          navigation.navigate('SecondaryEmotion');
         }}
       >
         <RecordButton
@@ -41,11 +40,9 @@ export default function PrimaryEmotionScreen({
       </Pressable>
       <Pressable
         onPress={() => {
-          setDailyData({
-            ...dailyData,
+          navigation.navigate('SecondaryEmotion', {
             primaryEmotion: Emotions.ANGRY,
           });
-          navigation.navigate('SecondaryEmotion');
         }}
       >
         <RecordButton
@@ -56,11 +53,9 @@ export default function PrimaryEmotionScreen({
       </Pressable>
       <Pressable
         onPress={() => {
-          setDailyData({
-            ...dailyData,
+          navigation.navigate('SecondaryEmotion', {
             primaryEmotion: Emotions.SAD,
           });
-          navigation.navigate('SecondaryEmotion');
         }}
       >
         <RecordButton
@@ -71,11 +66,9 @@ export default function PrimaryEmotionScreen({
       </Pressable>
       <Pressable
         onPress={() => {
-          setDailyData({
-            ...dailyData,
+          navigation.navigate('SecondaryEmotion', {
             primaryEmotion: Emotions.FEAR,
           });
-          navigation.navigate('SecondaryEmotion');
         }}
       >
         <RecordButton
@@ -86,11 +79,9 @@ export default function PrimaryEmotionScreen({
       </Pressable>
       <Pressable
         onPress={() => {
-          setDailyData({
-            ...dailyData,
+          navigation.navigate('SecondaryEmotion', {
             primaryEmotion: Emotions.SURPRISE,
           });
-          navigation.navigate('SecondaryEmotion');
         }}
       >
         <RecordButton
@@ -101,11 +92,9 @@ export default function PrimaryEmotionScreen({
       </Pressable>
       <Pressable
         onPress={() => {
-          setDailyData({
-            ...dailyData,
+          navigation.navigate('SecondaryEmotion', {
             primaryEmotion: Emotions.DISGUST,
           });
-          navigation.navigate('SecondaryEmotion');
         }}
       >
         <RecordButton

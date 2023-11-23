@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 type Props = {
   title: string;
@@ -39,20 +39,20 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingVertical: 14,
     paddingHorizontal: 5,
-    backgroundColor: "#57C877",
+    backgroundColor: '#57C877',
     width: 200,
-    alignSelf: "center",
+    alignSelf: 'center',
     marginTop: 20,
     marginBottom: 30,
   },
   buttonPressed: {
-    backgroundColor: "#4FB06B",
+    backgroundColor: '#4FB06B',
   },
   buttonText: {
-    color: "#1A1C27",
-    fontWeight: "bold",
-    textTransform: "uppercase",
+    color: '#1A1C27',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });
